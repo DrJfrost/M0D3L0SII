@@ -1,20 +1,17 @@
-def mult(x,y):
+def multiplicacion(x,y):
     if (y==0):
         return 0
-    return x + mult(x,y-1)
+    return x + multiplicacion(x,y-1)
 
 
-def pot (x,y):
-    if (y==0):
-        return 1
-    else:
-        return x * pot(x,y-1)
 
-def div(x,y):
+def division(x,y):
     if (y>x):
         return 0
+    elif(y==0):
+        print("Ideterminado division por 0")
     elif(y<=x):
-        return 1 + div(x-y,y)
+        return 1 + division(x-y,y)
 
 
 def fib(n):
@@ -24,40 +21,40 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 
 
-def cont(n):
+def digitNumber(n):
     if (n<10):
         return n
-    return 1+cont(n/10)
+    return 1+digitNumber(n/10)
 
-def pali(n):
+def palindromo(n):
     def rec(n, diez):
         if n < 10:
             return n
         else:
             return n % 10 * diez + rec(n // 10, diez // 10)  # double slash means integer division :'v
-    if rec(n, 10 ** (cont(n)-1)) == n:
-        return True
+    if rec(n, 10 ** (digitNumber(n)-1)) == n:
+        print("Es palindromo")
     else:
-        return False
+        print("No es palindromo")
 
 
-def sum(n):
+def sumaDigt(n):
     def rec(n, diez):
         if n < 10:
             return n
         else:
             return n % 10 + rec(n // 10, diez // 10)
-    return rec(n,  10 ** (cont(n)-1))
+    return rec(n,  10 ** (digitNumber(n)-1))
 
-def rev(n):
+def reverse(n):
     def rec(n, diez):
         if n < 10:
             return n
         else:
             return n % 10 * diez + rec(n // 10, diez // 10)  # double slash means integer division :'v
-    return rec(n, 10 ** (cont(n)-1))
+    return rec(n, 10 ** (digitNumber(n)-1))
 
-def big(n):
+def bigggest(n):
     def rec(n, diez):
         if n < 10:
             return n
@@ -66,7 +63,15 @@ def big(n):
                 return n % 10
             elif(n % 10 <= rec(n // 10, diez // 10)):
                 return rec(n // 10, diez // 10)
-    return rec(n,  10 ** (cont(n)-1))
+    return rec(n,  10 ** (digitNumber(n)-1))
 
 
-print(big(int(input())))
+def potencia (x,y):
+    if (y==0) and (x<>0):
+        return 1
+    elif(y==0) and (x==0):
+        print("indeterminado 0 ^ 0")
+    elif(x==0) and (y<>0):
+        return 0
+    elif(y<>0) and (x<>0):
+        return x * potencia(x,y-1)
